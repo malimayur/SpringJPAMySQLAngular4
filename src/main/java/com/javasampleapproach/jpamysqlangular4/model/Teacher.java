@@ -34,7 +34,7 @@ public class Teacher implements Serializable {
 	@Column(name = "email")
 	private String email;
 
-	protected Teacher() {
+	public Teacher() {
 	}
 
 	public long getId() {

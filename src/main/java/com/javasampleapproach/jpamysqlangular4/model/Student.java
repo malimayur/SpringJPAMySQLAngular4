@@ -1,12 +1,16 @@
 package com.javasampleapproach.jpamysqlangular4.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -39,6 +43,9 @@ public class Student implements Serializable {
 	@NotEmpty
 	@Column(name = "email")
 	private String email;
+	
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Attendance> attendance;
 
 	public Student() {
 	}
@@ -89,6 +96,14 @@ public class Student implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Set<Attendance> getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(Set<Attendance> attendance) {
+		this.attendance = attendance;
 	}
 
 	@Override

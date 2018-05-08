@@ -31,8 +31,8 @@ public class StudentController {
 		return list;
 	}
 	
-	@PostMapping(value="/poststudent")
-	public Student postCustomer(@RequestBody Student student) {
+	@PostMapping(value="/createstudent")
+	public Student createCustomer(@RequestBody Student student) {
 		Student studentObj = new Student();
 		studentObj.setFirstName(student.getFirstName());
 		studentObj.setLastName(student.getLastName());
@@ -43,7 +43,7 @@ public class StudentController {
 		return student;
 	}
 
-	@GetMapping(value="/findbystudentlastname/{lastName}",  produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/findstudentbylastname/{lastName}",  produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Student> findByLastName(@PathVariable String lastName) {
 		List<Student> customers = repository.findByLastName(lastName);
 		return customers;
